@@ -1,0 +1,149 @@
+#- setup variable for cluster installation
+
+########################################################
+# If the network is not working, please set it offline.
+# Installation mode (online / offline)
+########################################################
+install_mode: "offline"
+offline_copy: "yes"
+
+########################################################
+# Chartmuseum
+########################################################
+chart_id: admin
+chart_pw: accordionadmin
+
+########################################################
+## Installation option(full/kubernetes/accordion/registry)
+########################################################
+install_option: "full"
+
+########################################################
+## member_option(base/openshift) - beta
+########################################################
+member_option: "base"
+
+########################################################
+# kubeadm config 
+########################################################
+kube_apiserver_bind_address: 0.0.0.0
+kube_apiserver_port: 6443
+kube_apiserver_node_port_range: "30000-32767"
+certificates_duration: 7300
+
+########################################################
+## Common
+########################################################
+accordion_version: "2.1.0"
+apm_agent_sidecar_injector_version: "2.1.0"
+scouter_agent_version: "2.6.1-acc"
+xlog_apiserver_version: "2.1.1"
+scouter_server_version: "2.6.1-acc"
+scouter_exporter_version: "2.0.2"
+scouter_manager_version: "2.1.0"
+auth_manager_version: "2.0.0"
+cicd_manager_version: "2.1.0"
+cicd_artifact_version: "2.0.1"
+cicd_approver_version: "2.0.0"
+cicd_deployer_version: "2.0.1"
+cicd_template_sync_manager_version: "2.0.1"
+cicd_apiserver_version: "2.1.0"
+cicd_vcs_git_version: "2.0.0"
+cicd_vcs_svn_version: "2.0.1"
+cicd_image_kaniko_version: "2.0.2"
+registry_manager_version: "2.0.0"
+member_log_apiserver_version: "2.0.1"
+alarm_apiserver_version: "2.0.0"
+alert_apiserver_version: "2.0.2"
+cloud_apiserver_version: "2.0.0"
+gateway_version: "2.0.3"
+authset_manager_version: "2.0.0"
+setting_manager_version: "2.0.0"
+gateway_proxy_version: "1.20.1-alpine"
+member_agent_version: "2.0.1"
+monitoring_apiserver_version: "2.0.3"
+console_version: "2.1.1"
+host_log_apiserver_version: "2.0.2"
+manual_webserver_version: "2.1.1"
+clusterinfo_manager_version: "2.0.1"
+env_manager_version: "2.0.0"
+psp_manager_version: "2.0.0"
+
+kubernetes_version: "1.21.7"
+timezone: Asia/Seoul
+
+########################################################
+## ha
+########################################################
+minio_ha: "no"
+prometheus_ha: "no"
+alertmanager_ha: "no"
+elasticsearch_ha: "no"
+logstash_ha: "no"
+thanos_ha: "no"
+tsdb_ha: "no"
+
+########################################################
+## Storage
+########################################################
+alertmanager_storage: "50Gi"
+prometheus_storage: "50Gi"
+tsdb_storage: "2Gi"
+tsdb_wal_storage: "1Gi"
+minio_storage: "20Gi"
+elastic_storage: "30Gi"
+keycloak_storage: "10Gi"
+chartmuseum_storage: "10Gi"
+backup_storage: "20Gi"
+
+#######################################################
+cicd_manager_storage: "10Gi"
+monitoring_apiserver_storage: "10Gi"
+cloud_helm_cache_storage: "1Gi"
+cloud_helm_config_storage: "1Gi"
+
+#######################################################
+registry_storage: "50Gi"
+harbor_registry_storage: "50Gi"
+harbor_chartmuseum_storage: "5Gi"
+harbor_db_storage: "1Gi"
+harbor_trivy_storage: "5Gi"
+harbor_redis_storage: "1Gi"
+
+########################################################
+## kubernetes option
+########################################################
+kube_controller_node_monitor_grace_period: 40s
+kube_controller_node_monitor_period: 5s
+kube_controller_pod_eviction_timeout: 5m0s
+kube_controller_autoscaler_downscale_delay: 1m0s
+kube_controller_autoscaler_upscale_delay: 1m0s
+kube_controller_autoscaler_sync_period: 15s
+
+########################################################
+## admission plugins
+########################################################
+kube_apiserver_enable_admission_plugins: []
+
+########################################################
+## list of disabled admission plugins
+########################################################
+kube_apiserver_disable_admission_plugins: []
+
+########################################################
+## list of extra args
+########################################################
+kube_kubeadm_apiserver_extra_args: {}
+kube_kubeadm_controller_extra_args: {}
+kube_kubeadm_scheduler_extra_args: {}
+
+########################################################
+## List of the preferred NodeAddressTypes to use for kubelet connections.
+########################################################
+kubelet_preferred_address_types: 'InternalDNS,InternalIP,Hostname,ExternalDNS,ExternalIP'
+
+##########################
+# restore
+#########################
+backup_dir: "/mantech/backup"
+etcd_filename: "snapshot.db"
